@@ -1,0 +1,80 @@
+2) 
+Program:
+Program for Head.h
+int mul(int,int); int div(int,int);
+
+Program for mul.c
+int mul(a,b)
+{
+return(a*b);
+}
+ 
+Program for div.c
+int div(c,d)
+{
+return(c/d);
+}
+
+Program for main.c # include <stdio.h> # include “Head.h” void main()
+{
+int x; int y;
+printf(“Enter x,y \n”); scanf(“%d %d”, &x,&y);
+printf(“%d”,mul(x,y));
+printf(“%d”,div(x,y));
+}
+
+Commands:
+•	$ gcc -c mul.c
+•	$ gcc -c div.c
+•	$ gcc -c main.c
+•	$ ar rs libhead.a mul.o div.o
+•	$ gcc -o main main.o libhead.a
+•	objdump main.o
+•	strings main.o
+•	size main.o
+•	nm main.o
+•	strip main.o
+
+Program to reverse the number:
+#include<stdio.h> int main()
+{
+int n,rev=0;
+printf(“Enter the number:\n”); scanf(“%d”,&n);
+while(n!=0)
+{
+rev=rev *10 + (n%10); n=n/10;
+}
+printf(“Enter the reverse number=%d\n”,rev); return 0;
+}
+ 
+Compile the program and execute the following steps:
+•	gcc -g filename.c
+•	gdb -q a.out
+
+4)
+#include <linux/module.h> #include <linux/init.h>
+
+/*META INFORMATION*/ MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Raghav 4 GNU/Linux"); MODULE_DESCRIPTION("A hello world Linux kernal module");
+
+// @brief This function is called, when the module is loaded into the kernel static int     init hello_start(void)
+{
+printk ("Hello, I'm here to help\n"); return 0;
+}
+
+// @brief This function is called, when the module is removed into the kernel static void     exit hello_end(void)
+{
+printk("Goodbye, I hope I was helpful\n");
+}
+
+module_init(hello_start); module_exit(hello_end);
+
+Makefile:
+obj-m += hello.o
+KVERSION = $(shell uname -r) all:
+ 
+
+clean:
+ 
+make -C /lib/modules/$(KVERSION)/build M=$(PWD) modules make -C /lib/modules/$(KVERSION)/build M=$(PWD) clean
+
