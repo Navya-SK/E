@@ -1,0 +1,16 @@
+2EXP
+gcc -c head.c
+gcc -c mul.c
+gcc -c div.c
+gcc -c main.c
+ar rs libhead.a mul.o div.o
+gcc -o main main.o libhead.a
+objdump -t main 
+strings main.o 
+nm main.o
+
+3EXP
+sudo apt install cscope
+touch file.c
+nano file.c
+cscope file.c
